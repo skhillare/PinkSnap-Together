@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PinkSnap Studio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo">
+            📸 PinkSnap
+        </div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Gallery</a>
+            <a href="#">About</a>
+        </nav>
+
+        <button id="themeBtn">🌙</button>
+
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <div class="heroText">
+
+            <h1>Capture Every Smile</h1>
+
+            <p>
+                Premium Pink & White Photo Booth Experience
+            </p>
+
+            <div class="mode-buttons">
+
+                <button id="soloBtn">
+                    📸 Solo Mode
+                </button>
+
+                <button id="coupleBtn">
+                    ❤️ Couple Mode
+                </button>
+
+            </div>
+
+            <button id="startCamera">
+                📷 Start Camera
+            </button>
+
+        </div>
+
+        <div class="cameraBox">
+
+            <video id="camera" autoplay playsinline></video>
+
+            <div id="countdown"></div>
+
+            <canvas id="canvas"></canvas>
+
+            <div id="flash" class="flash"></div>
+
+        </div>
+
+    </section>
+
+    <!-- Capture Section -->
+
+    <section class="capturePanel">
+
+        <h2>📸 Photo Booth</h2>
+
+        <div class="buttons">
+
+            <button id="captureBtn">
+                📸 Capture
+            </button>
+
+            <button id="downloadBtn">
+                📥 Download
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Gallery -->
+
+    <section class="gallery">
+
+        <h2>🖼 Gallery</h2>
+
+        <div id="gallery"></div>
+
+    </section>
+
+    <!-- Couple Mode Modal -->
+
+    <div class="modal" id="roomModal">
+
+        <div class="modal-content">
+
+            <h2>❤️ Couple Mode</h2>
+
+            <p>Create a room or join your partner.</p>
+
+            <button id="createRoomBtn">
+                ✨ Create Room
+            </button>
+
+            <div class="divider">
+                OR
+            </div>
+
+            <input
+                type="text"
+                id="roomCode"
+                placeholder="Enter Room Code">
+
+            <button id="joinRoomBtn">
+                ❤️ Join Room
+            </button>
+
+            <button id="closeModal">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 PinkSnap Studio ❤️ Made by Suraj
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
