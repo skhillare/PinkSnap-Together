@@ -148,7 +148,7 @@ const gallery = document.getElementById("galleryGrid");
 const canvas = document.createElement("canvas");
 const stripCanvas = document.createElement("canvas");
 const stripCtx = stripCanvas.getContext("2d");
-
+let photoCount = 2;
 let capturedPhotos = [];
 
 // Countdown
@@ -365,8 +365,6 @@ window.addEventListener("load",()=>{
 const stripButtons = document.querySelectorAll(".stripBtn");
 const stripInfo = document.getElementById("stripInfo");
 
-let photoCount = 2;
-
 stripButtons.forEach(btn=>{
 
     btn.addEventListener("click",()=>{
@@ -435,3 +433,4 @@ async function createPhotoStrip() {
     return stripCanvas.toDataURL("image/png");
 
 }
+console.log("END OF APP.JS");
