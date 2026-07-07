@@ -146,6 +146,8 @@ const countdown = document.getElementById("countdown");
 const gallery = document.getElementById("galleryGrid");
 
 const canvas = document.createElement("canvas");
+const stripCanvas = document.createElement("canvas");
+const stripCtx = stripCanvas.getContext("2d");
 
 let capturedPhotos = [];
 
@@ -230,29 +232,21 @@ captureBtn.addEventListener("click", async () => {
 
 });
 
-// Download
+downloadBtn.addEventListener("click", async () => {
 
-downloadBtn.addEventListener("click",()=>{
+    const strip = await createPhotoStrip();
 
-    if(capturedPhotos.length===0){
-
+    if (!strip) {
         alert("Capture photos first!");
-
         return;
-
     }
 
-    capturedPhotos.forEach((img,index)=>{
+    const a = document.createElement("a");
 
-        const a=document.createElement("a");
+    a.href = strip;
+    a.download = "PinkSnapStrip.png";
 
-        a.href=img;
-
-        a.download=`PinkSnap_${index+1}.png`;
-
-        a.click();
-
-    });
+    a.click();
 
 });
 // ============================
@@ -389,3 +383,55 @@ stripButtons.forEach(btn=>{
     });
 
 });
+async function createPhotoStrip() {
+
+    if (capturedPhotos.length === 0) return;
+
+    const width = 500;
+    const photoHeight = 350;
+
+    stripCanvas.width = width;
+    stripCanvas.height = (photoHeight * capturedPhotos.length) + 100;
+
+    stripCtx.fillStyle = "#ffffff";
+    stripCtx.fillRect(0, 0, stripCanvas.width, stripCanvas.height);
+
+    for (let i = 0; i < capturedPhotos.length; i++) {
+
+        const img = new Image();
+
+        await new Promise(resolve => {
+
+            img.onload = () => {
+
+                stripCtx.drawImage(
+                    img,
+                    20,
+                    20 + (i * photoHeight),
+                    width - 40,
+                    photoHeight - 20
+                );
+
+                resolve();
+
+            };
+
+            img.src = capturedPhotos[i];
+
+        });
+
+    }
+
+    stripCtx.fillStyle = "#ff4fa0";
+    stripCtx.font = "bold 28px Arial";
+    stripCtx.textAlign = "center";
+
+    stripCtx.fillText(
+        "PinkSnap ❤️",
+        width / 2,
+        stripCanvas.height - 30
+    );
+
+    return stripCanvas.toDataURL("image/png");
+
+}
