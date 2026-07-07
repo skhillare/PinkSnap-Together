@@ -147,7 +147,7 @@ const gallery = document.getElementById("galleryGrid");
 
 const canvas = document.createElement("canvas");
 
-let lastCapturedImage = null;
+let capturedPhotos = [];
 
 // Countdown
 
@@ -189,7 +189,13 @@ function flashEffect(){
 
 // Capture
 
-captureBtn.addEventListener("click",async()=>{
+if(capturedPhotos.length >= photoCount){
+
+    alert("Photo Strip Complete!");
+
+    return;
+
+} captureBtn.addEventListener("click",async()=>{
 
     if(!stream){
 
@@ -227,9 +233,13 @@ captureBtn.addEventListener("click",async()=>{
 
     img.src=image;
 
-    gallery.innerHTML="";
+    capturedPhotos.push(image);
 
-    gallery.appendChild(img);
+const img = document.createElement("img");
+
+img.src = image;
+
+gallery.appendChild(img);
 
 });
 
@@ -237,21 +247,25 @@ captureBtn.addEventListener("click",async()=>{
 
 downloadBtn.addEventListener("click",()=>{
 
-    if(!lastCapturedImage){
+    if(capturedPhotos.length===0){
 
-        alert("Capture a photo first!");
+        alert("Capture photos first!");
 
         return;
 
     }
 
-    const a=document.createElement("a");
+    capturedPhotos.forEach((img,index)=>{
 
-    a.href=lastCapturedImage;
+        const a=document.createElement("a");
 
-    a.download="PinkSnap.png";
+        a.href=img;
 
-    a.click();
+        a.download=`PinkSnap_${index+1}.png`;
+
+        a.click();
+
+    });
 
 });
 // ============================
