@@ -2,160 +2,505 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PinkSnap Studio</title>
+    <title>PinkSnap Together</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
+<!-- ================= HEADER ================= -->
 
-        <div class="logo">
-            📸 PinkSnap
-        </div>
+<header class="header">
 
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Features</a>
-            <a href="#">Gallery</a>
-            <a href="#">About</a>
-        </nav>
+<div class="logo">
 
-        <button id="themeBtn">🌙</button>
+📸 PinkSnap
 
-    </header>
+</div>
 
-    <!-- Hero -->
-    <section class="hero">
+<nav>
 
-        <div class="heroText">
+<a href="#">Home</a>
 
-            <h1>Capture Every Smile</h1>
+<a href="#">Features</a>
 
-            <p>
-                Premium Pink & White Photo Booth Experience
-            </p>
+<a href="#">Gallery</a>
 
-            <div class="mode-buttons">
+<a href="#">About</a>
 
-                <button id="soloBtn">
-                    📸 Solo Mode
-                </button>
+<a href="#">Contact</a>
 
-                <button id="coupleBtn">
-                    ❤️ Couple Mode
-                </button>
+</nav>
 
-            </div>
+<div class="headerButtons">
 
-            <button id="startCamera">
-                📷 Start Camera
-            </button>
+<button id="themeBtn">
 
-        </div>
+🌙
 
-        <div class="cameraBox">
+</button>
 
-            <video id="camera" autoplay playsinline></video>
+</div>
 
-            <div id="countdown"></div>
+</header>
 
-            <canvas id="canvas"></canvas>
+<!-- ================= HERO ================= -->
 
-            <div id="flash" class="flash"></div>
+<section class="hero">
 
-        </div>
+<div class="heroLeft">
 
-    </section>
+<span class="badge">
 
-    <!-- Capture Section -->
+💖 Premium Online Photo Booth
 
-    <section class="capturePanel">
+</span>
 
-        <h2>📸 Photo Booth</h2>
+<h1>
 
-        <div class="buttons">
+Capture Memories Together
 
-            <button id="captureBtn">
-                📸 Capture
-            </button>
+</h1>
 
-            <button id="downloadBtn">
-                📥 Download
-            </button>
+<p>
 
-        </div>
+Create beautiful photo strips with your friends,
+partner or family even if you are living
+in another city or country.
 
-    </section>
+</p>
 
-    <!-- Gallery -->
+<div class="heroButtons">
 
-    <section class="gallery">
+<button id="soloBtn">
 
-        <h2>🖼 Gallery</h2>
+📸 Solo Mode
 
-        <div id="gallery"></div>
+</button>
 
-    </section>
+<button id="coupleBtn">
 
-    <!-- Couple Mode Modal -->
+❤️ Couple Mode
 
-    <div class="modal" id="roomModal">
+</button>
 
-        <div class="modal-content">
+</div>
 
-            <h2>❤️ Couple Mode</h2>
+</div>
 
-            <p>Create a room or join your partner.</p>
+<div class="heroRight">
 
-            <button id="createRoomBtn">
-                ✨ Create Room
-            </button>
+<div class="cameraCard">
 
-            <div class="divider">
-                OR
-            </div>
+<video
+id="camera"
+autoplay
+playsinline
+muted>
 
-            <input
-                type="text"
-                id="roomCode"
-                placeholder="Enter Room Code">
+</video>
 
-            <button id="joinRoomBtn">
-                ❤️ Join Room
-            </button>
+<div id="flash"></div>
 
-            <button id="closeModal">
-                Close
-            </button>
+<div id="countdown">
+
+3
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+<h2>
+
+Everything You Need
+
+</h2>
+
+<div class="featureGrid">
+
+<div class="card">
+
+<h3>
+
+📸 HD Camera
+
+</h3>
+
+<p>
+
+Crystal clear camera quality.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+❤️ Couple Mode
+
+</h3>
+
+<p>
+
+Take photos together online.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+🎞 Photo Strips
+
+</h3>
+
+<p>
+
+2 • 4 • 6 • 8 layouts
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+✨ Filters
+
+</h3>
+
+<p>
+
+Vintage, Retro, B&W and more.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+😀 Stickers
+
+</h3>
+
+<p>
+
+Cute emojis and decorations.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>
+
+📥 Download
+
+</h3>
+
+<p>
+
+HD PNG Downloads.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CAMERA ================= -->
+
+<section class="studio">
+
+<h2>
+
+Photo Booth Studio
+
+</h2>
+
+<div class="studioContainer">
+
+<div class="cameraBox">
+
+<video
+
+id="liveCamera"
+
+autoplay
+
+playsinline>
+
+</video>
+
+</div>
+
+<div class="controls">
+
+<button id="startCamera">
+
+📷 Start Camera
+
+</button>
+
+<button id="capture">
+
+📸 Capture
+
+</button>
+
+<button id="retake">
+
+🔄 Retake
+
+</button>
+
+<button id="download">
+
+📥 Download
+
+</button>
+
+<button id="mirror">
+
+🪞 Mirror
+
+</button>
+
+<button id="fullscreen">
+
+⛶ Fullscreen
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+<!-- ================= GALLERY ================= -->
+
+<section class="gallery">
+
+    <h2>🖼 Gallery</h2>
+
+    <div id="galleryGrid" class="galleryGrid">
+
+        <div class="emptyGallery">
+
+            <h3>No Photos Yet</h3>
+
+            <p>Your captured photos will appear here.</p>
 
         </div>
 
     </div>
 
-    <!-- Footer -->
+</section>
 
-    <footer>
+<!-- ================= PHOTO STRIP ================= -->
+
+<section class="stripSection">
+
+    <h2>🎞 Choose Photo Strip</h2>
+
+    <div class="stripButtons">
+
+        <button class="stripBtn">2 Photos</button>
+
+        <button class="stripBtn">4 Photos</button>
+
+        <button class="stripBtn">6 Photos</button>
+
+        <button class="stripBtn">8 Photos</button>
+
+    </div>
+
+</section>
+
+<!-- ================= FILTERS ================= -->
+
+<section class="filters">
+
+    <h2>✨ Filters</h2>
+
+    <div class="filterButtons">
+
+        <button>Normal</button>
+
+        <button>Vintage</button>
+
+        <button>B&W</button>
+
+        <button>Retro</button>
+
+        <button>Cool</button>
+
+        <button>Warm</button>
+
+    </div>
+
+</section>
+
+<!-- ================= FRAMES ================= -->
+
+<section class="frames">
+
+    <h2>🖼 Frames</h2>
+
+    <div class="frameButtons">
+
+        <button>Polaroid</button>
+
+        <button>Film Strip</button>
+
+        <button>Birthday</button>
+
+        <button>Wedding</button>
+
+        <button>Love</button>
+
+    </div>
+
+</section>
+
+<!-- ================= STICKERS ================= -->
+
+<section class="stickers">
+
+    <h2>😀 Stickers</h2>
+
+    <div class="stickerButtons">
+
+        <button>❤️</button>
+
+        <button>😂</button>
+
+        <button>😍</button>
+
+        <button>⭐</button>
+
+        <button>🎀</button>
+
+        <button>🌸</button>
+
+    </div>
+
+</section>
+
+<!-- ================= COUPLE MODAL ================= -->
+
+<div id="roomModal" class="modal">
+
+    <div class="modalContent">
+
+        <h2>❤️ Couple Mode</h2>
+
+        <p>Create a room or join your partner.</p>
+
+        <button id="createRoom">
+
+            ✨ Create Room
+
+        </button>
+
+        <div class="divider">
+
+            OR
+
+        </div>
+
+        <input
+        type="text"
+        id="roomInput"
+        placeholder="Enter Room Code">
+
+        <button id="joinRoom">
+
+            ❤️ Join Room
+
+        </button>
+
+        <button id="closeModal">
+
+            Close
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footerContainer">
+
+        <h2>
+
+            📸 PinkSnap Together
+
+        </h2>
 
         <p>
-            © 2026 PinkSnap Studio ❤️ Made by Suraj
+
+            Capture beautiful memories together from anywhere in the world.
+
         </p>
 
-    </footer>
+        <div class="footerLinks">
 
-    <script src="script.js"></script>
+            <a href="#">Privacy</a>
+
+            <a href="#">Terms</a>
+
+            <a href="#">Support</a>
+
+            <a href="#">Contact</a>
+
+        </div>
+
+        <p class="copyright">
+
+            © 2026 PinkSnap Together | Made with ❤️ by Suraj
+
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="app.js"></script>
 
 </body>
-
 </html>
