@@ -187,59 +187,46 @@ function flashEffect(){
 
 }
 
+// ============================
 // Capture
+// ============================
 
-if(capturedPhotos.length >= photoCount){
+captureBtn.addEventListener("click", async () => {
 
-    alert("Photo Strip Complete!");
-
-    return;
-
-} captureBtn.addEventListener("click",async()=>{
-
-    if(!stream){
-
-        alert("Please Start Camera First");
-
+    if (capturedPhotos.length >= photoCount) {
+        alert("Photo Strip Complete!");
         return;
+    }
 
+    if (!stream) {
+        alert("Please Start Camera First");
+        return;
     }
 
     await startCountdown();
 
     flashEffect();
 
-    canvas.width=camera.videoWidth;
+    canvas.width = camera.videoWidth;
+    canvas.height = camera.videoHeight;
 
-    canvas.height=camera.videoHeight;
+    const ctx = canvas.getContext("2d");
 
-    const ctx=canvas.getContext("2d");
-
-    if(mirror){
-
-        ctx.translate(canvas.width,0);
-
-        ctx.scale(-1,1);
-
+    if (mirror) {
+        ctx.translate(canvas.width, 0);
+        ctx.scale(-1, 1);
     }
 
-    ctx.drawImage(camera,0,0);
+    ctx.drawImage(camera, 0, 0);
 
-    const image=canvas.toDataURL("image/png");
-
-    lastCapturedImage=image;
-
-    const img=document.createElement("img");
-
-    img.src=image;
+    const image = canvas.toDataURL("image/png");
 
     capturedPhotos.push(image);
 
-const img = document.createElement("img");
+    const img = document.createElement("img");
+    img.src = image;
 
-img.src = image;
-
-gallery.appendChild(img);
+    gallery.appendChild(img);
 
 });
 
