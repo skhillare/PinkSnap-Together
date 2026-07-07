@@ -1228,3 +1228,14 @@ background-position:0% 50%;
 /* ===========================
 End Of CSS
 =========================== */
+.stripBtn.active{
+    background:#ff5fa2;
+    color:#fff;
+    transform:scale(1.05);
+}
+
+#stripInfo{
+    margin-top:15px;
+    font-weight:600;
+    text-align:center;
+}

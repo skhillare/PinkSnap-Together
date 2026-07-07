@@ -363,3 +363,28 @@ window.addEventListener("load",()=>{
 // Shared Countdown
 // Shared Capture
 // Shared Photo Strip
+// ===========================
+// Photo Strip Layout
+// ===========================
+
+const stripButtons = document.querySelectorAll(".stripBtn");
+const stripInfo = document.getElementById("stripInfo");
+
+let photoCount = 2;
+
+stripButtons.forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        stripButtons.forEach(b=>b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        photoCount = Number(btn.dataset.count);
+
+        stripInfo.innerHTML =
+        `Current Layout : <strong>${photoCount} Photos</strong>`;
+
+    });
+
+});
