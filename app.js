@@ -2,9 +2,11 @@
 // PinkSnap Together
 // app.js - Part 1
 // ============================
+alert("APP STARTED");
+// Socket Connection
+const socket = io("http://localhost:3000");
 
 // Elements
-
 const camera = document.getElementById("liveCamera");
 const startCamera = document.getElementById("startCamera");
 
@@ -150,7 +152,7 @@ const stripCanvas = document.createElement("canvas");
 const stripCtx = stripCanvas.getContext("2d");
 let photoCount = 2;
 let capturedPhotos = [];
-
+let currentFrame = "polaroid";
 // Countdown
 
 async function startCountdown(){
@@ -336,6 +338,12 @@ joinRoomBtn.addEventListener("click",()=>{
 
 });
 
+socket.on("partner-joined", () => {
+
+    alert("❤️ Partner Connected Successfully!");
+
+});
+
 // ============================
 // ESC Close Modal
 // ============================
@@ -407,13 +415,27 @@ async function createPhotoStrip() {
     if (capturedPhotos.length === 0) return;
 
     const width = 500;
-    const photoHeight = 350;
+    const photoHeight = 360;
+    const photoGap = 20;
 
     stripCanvas.width = width;
-    stripCanvas.height = (photoHeight * capturedPhotos.length) + 100;
+    stripCanvas.height =
+    (capturedPhotos.length * (photoHeight + photoGap)) + 120;
 
-    stripCtx.fillStyle = "#ffffff";
-    stripCtx.fillRect(0, 0, stripCanvas.width, stripCanvas.height);
+// Background
+stripCtx.fillStyle = "#ffffff";
+stripCtx.fillRect(0, 0, stripCanvas.width, stripCanvas.height);
+
+// Frame Border
+stripCtx.strokeStyle = "#ff4fa0";
+stripCtx.lineWidth = 10;
+stripCtx.strokeRect(
+    5,
+    5,
+    stripCanvas.width - 10,
+    stripCanvas.height - 10
+);
+
     // White Border
 stripCtx.strokeStyle = "#ff4fa0";
 stripCtx.lineWidth = 8;
@@ -428,7 +450,7 @@ stripCtx.strokeRect(4, 4, stripCanvas.width - 8, stripCanvas.height - 8);
             img.onload = () => {
 
                const x = 20;
-const y = 20 + (i * photoHeight);
+const y = 20 + (i * (photoHeight + photoGap))
 const w = width - 40;
 const h = photoHeight - 20;
 
@@ -447,15 +469,25 @@ stripCtx.drawImage(img, x, y, w, h);
 
     }
 
-    stripCtx.fillStyle = "#ff4fa0";
-    stripCtx.font = "bold 28px Arial";
-    stripCtx.textAlign = "center";
+    // Footer
+stripCtx.fillStyle = "#ff4fa0";
+stripCtx.font = "bold 30px Arial";
+stripCtx.textAlign = "center";
 
-    stripCtx.fillText(
-        "PinkSnap ❤️",
-        width / 2,
-        stripCanvas.height - 30
-    );
+stripCtx.fillText(
+    "📸 PinkSnap Together",
+    width / 2,
+    stripCanvas.height - 45
+);
+
+stripCtx.fillStyle = "#666";
+stripCtx.font = "18px Arial";
+
+stripCtx.fillText(
+    new Date().toLocaleDateString(),
+    width / 2,
+    stripCanvas.height - 15
+);
 
     return stripCanvas.toDataURL("image/png");
 
