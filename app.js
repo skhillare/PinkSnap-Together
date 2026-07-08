@@ -250,6 +250,24 @@ downloadBtn.addEventListener("click", async () => {
 
 });
 // ============================
+// Retake
+// ============================
+
+const retakeBtn = document.getElementById("retake");
+
+retakeBtn.addEventListener("click", () => {
+
+    capturedPhotos = [];
+
+    gallery.innerHTML = `
+        <div class="emptyGallery">
+            <h3>No Photos Yet</h3>
+            <p>Your captured photos will appear here.</p>
+        </div>
+    `;
+
+});
+// ============================
 // Couple Room UI
 // ============================
 
