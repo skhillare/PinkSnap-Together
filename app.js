@@ -101,7 +101,7 @@ window.onclick=(e)=>{
 // ============================
 
 let mirror=false;
-
+let currentFilter = "none";
 mirrorBtn.addEventListener("click",()=>{
 
     mirror=!mirror;
@@ -214,12 +214,15 @@ captureBtn.addEventListener("click", async () => {
 
     const ctx = canvas.getContext("2d");
 
-    if (mirror) {
-        ctx.translate(canvas.width, 0);
-        ctx.scale(-1, 1);
-    }
+if (mirror) {
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1);
+}
 
-    ctx.drawImage(camera, 0, 0);
+// Apply selected filter to captured photo
+ctx.filter = currentFilter;
+
+ctx.drawImage(camera, 0, 0);
 
     const image = canvas.toDataURL("image/png");
 
@@ -458,3 +461,24 @@ stripCtx.drawImage(img, x, y, w, h);
 
 }
 console.log("END OF APP.JS");
+// ============================
+// Filters
+// ============================
+
+const filterButtons = document.querySelectorAll(".filterBtn");
+
+filterButtons.forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        filterButtons.forEach(b=>b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        currentFilter = btn.dataset.filter;
+
+        camera.style.filter = currentFilter;
+
+    });
+
+});
