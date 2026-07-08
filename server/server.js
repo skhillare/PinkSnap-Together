@@ -32,13 +32,16 @@ io.on("connection", (socket) => {
     // Join Room
     socket.on("join-room", (room) => {
 
-        socket.join(room);
+    socket.join(room);
 
-        console.log("❤️ Joined Room:", room);
+    console.log("❤️ Joined Room:", room);
 
-        socket.to(room).emit("partner-joined");
+    console.log("Socket ID:", socket.id);
+    console.log("Room Members:", io.sockets.adapter.rooms.get(room));
 
-    });
+    socket.to(room).emit("partner-joined");
+
+});
 
     socket.on("disconnect", () => {
 

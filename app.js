@@ -20,6 +20,7 @@ const closeModal = document.getElementById("closeModal");
 
 const mirrorBtn = document.getElementById("mirror");
 const fullscreenBtn = document.getElementById("fullscreen");
+const roomStatus = document.getElementById("roomStatus");
 
 // Camera Stream
 
@@ -302,17 +303,21 @@ function generateRoomCode(){
 
 // Create Room
 
-createRoomBtn.addEventListener("click",()=>{
+createRoomBtn.addEventListener("click", () => {
 
-    const roomCode=generateRoomCode();
+    const roomCode = generateRoomCode();
 
-    roomInput.value=roomCode;
+    roomInput.value = roomCode;
+
+    socket.emit("create-room", roomCode);
+
+    roomStatus.innerHTML = "🟡 Waiting for Partner...";
 
     navigator.clipboard.writeText(roomCode);
 
     alert(
         "🎉 Room Created!\n\nRoom Code : "
-        +roomCode+
+        + roomCode +
         "\n\nCode Copied Successfully."
     );
 
@@ -320,11 +325,11 @@ createRoomBtn.addEventListener("click",()=>{
 
 // Join Room
 
-joinRoomBtn.addEventListener("click",()=>{
+joinRoomBtn.addEventListener("click", () => {
 
-    const code=roomInput.value.trim();
+    const code = roomInput.value.trim();
 
-    if(code===""){
+    if (code === "") {
 
         alert("Please Enter Room Code");
 
@@ -332,13 +337,21 @@ joinRoomBtn.addEventListener("click",()=>{
 
     }
 
-    alert("Joining Room : "+code);
+    socket.emit("join-room", code);
 
-    roomModal.style.display="none";
+    roomStatus.innerHTML = "🟡 Connecting...";
+
+    alert("Joining Room : " + code);
+
+    roomModal.style.display = "none";
 
 });
 
 socket.on("partner-joined", () => {
+
+    console.log("EVENT RECEIVED");
+
+    roomStatus.innerHTML = "🟢 Partner Connected";
 
     alert("❤️ Partner Connected Successfully!");
 
