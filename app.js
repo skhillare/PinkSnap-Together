@@ -411,6 +411,10 @@ async function createPhotoStrip() {
 
     stripCtx.fillStyle = "#ffffff";
     stripCtx.fillRect(0, 0, stripCanvas.width, stripCanvas.height);
+    // White Border
+stripCtx.strokeStyle = "#ff4fa0";
+stripCtx.lineWidth = 8;
+stripCtx.strokeRect(4, 4, stripCanvas.width - 8, stripCanvas.height - 8);
 
     for (let i = 0; i < capturedPhotos.length; i++) {
 
@@ -420,13 +424,15 @@ async function createPhotoStrip() {
 
             img.onload = () => {
 
-                stripCtx.drawImage(
-                    img,
-                    20,
-                    20 + (i * photoHeight),
-                    width - 40,
-                    photoHeight - 20
-                );
+               const x = 20;
+const y = 20 + (i * photoHeight);
+const w = width - 40;
+const h = photoHeight - 20;
+
+stripCtx.fillStyle = "#ffffff";
+stripCtx.fillRect(x - 5, y - 5, w + 10, h + 10);
+
+stripCtx.drawImage(img, x, y, w, h);
 
                 resolve();
 
