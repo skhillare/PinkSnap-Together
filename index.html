@@ -252,9 +252,36 @@ Photo Booth Studio
 
 <div class="cameraBox">
 
-<video
+    <div class="videoGrid">
 
-id="liveCamera"
+        <div class="videoCard">
+
+            <h3>📷 You</h3>
+
+            <video
+                id="liveCamera"
+                autoplay
+                playsinline
+                muted>
+            </video>
+
+        </div>
+
+        <div class="videoCard">
+
+            <h3>❤️ Partner</h3>
+
+            <video
+                id="remoteVideo"
+                autoplay
+                playsinline>
+            </video>
+
+        </div>
+
+    </div>
+
+</div>
 
 autoplay
 
@@ -438,7 +465,7 @@ playsinline>
             ❤️ Join Room
 
         </button>
-        
+
         <p id="roomStatus" style="margin-top:15px;color:#ff4fa0;font-weight:bold;">
                 Not Connected
         </p>
